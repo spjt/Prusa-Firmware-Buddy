@@ -175,9 +175,11 @@ public:
         if (x_freq < input_shaper::low_freq_limit_hz) {
             str_build_x_axis.append_string(text_x_axis);
             str_build_x_axis.append_string_view(_(text_freq_low));
+            str_build_x_axis.append_printf(" (%3d < %3d)", x_freq, input_shaper::low_freq_limit_hz);
         } else if (x_freq > input_shaper::high_freq_limit_hz) {
             str_build_x_axis.append_string(text_x_axis);
             str_build_x_axis.append_string_view(_(text_freq_high));
+            str_build_x_axis.append_printf(" (%3d > %3d)", x_freq, input_shaper::high_freq_limit_hz);
         } else {
             str_build_x_axis.append_string_view(_(text_shaper_x));
             str_build_x_axis.append_printf(type_freq_format, to_short_string(x_type), x_freq);
@@ -186,9 +188,11 @@ public:
         if (y_freq < input_shaper::low_freq_limit_hz) {
             str_build_y_axis.append_string(text_y_axis);
             str_build_y_axis.append_string_view(_(text_freq_low));
+            str_build_y_axis.append_printf(" (%3d < %3d)", y_freq, input_shaper::low_freq_limit_hz);
         } else if (y_freq > input_shaper::high_freq_limit_hz) {
             str_build_y_axis.append_string(text_y_axis);
             str_build_y_axis.append_string_view(_(text_freq_high));
+            str_build_y_axis.append_printf(" (%3d > %3d)", y_freq, input_shaper::high_freq_limit_hz);
         } else {
             str_build_y_axis.append_string_view(_(text_shaper_y));
             str_build_y_axis.append_printf(type_freq_format, to_short_string(y_type), y_freq);

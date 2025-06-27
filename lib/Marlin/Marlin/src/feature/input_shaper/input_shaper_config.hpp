@@ -57,7 +57,7 @@ static constexpr EnumArray<Type, bool, ftrstd::to_underlying(Type::cnt)> enabled
     { Type::null, true }
 };
 
-static constexpr uint8_t low_freq_limit_hz = 35;
+static constexpr uint8_t low_freq_limit_hz = 20; // https://www.klipper3d.org/Resonance_Compensation.html suggests a minimum of 20-25Hz
 static constexpr uint8_t high_freq_limit_hz = 70;
 
 const char *to_string(Type type);

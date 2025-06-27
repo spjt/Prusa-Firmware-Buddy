@@ -436,8 +436,11 @@ bool generate_next_step_event(step_event_i32_t &step_event, step_generator_state
         // probably valid assert, but triggering often and making any other debugging difficult.
         // BFW-5954.
         // assert(step_time_relative_ticks < std::numeric_limits<uint32_t>::max());
-
-        step_event.time_ticks = int32_t(step_time_relative_ticks);
+        if(step_time_relative_ticks < std::numeric_limits<uint32_t>::max()) {
+            step_event.time_ticks = int32_t(step_time_relative_ticks);
+        } else {
+            step_event.time_ticks = 0;
+        }
         step_event.flags = step_state.step_events[old_nearest_step_event_idx].flags;
         assert(step_event.flags); // ensure flags are non-zero
 
